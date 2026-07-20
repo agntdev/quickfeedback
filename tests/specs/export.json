@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/export",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Exports selected feedback entries as CSV"
+            }
+          }
+        ],
+        "send": {
+          "text": "/export"
+        }
+      }
+    ]
+  }
+]
