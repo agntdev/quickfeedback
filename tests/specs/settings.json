@@ -1,19 +1,17 @@
 [
   {
-    "name": "/settings",
+    "name": "/settings rejects non-admin users",
     "steps": [
       {
+        "send": { "text": "/settings" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Configures admin settings like notification recipients and daily summary"
+              "text": "This command is for admins only."
             }
           }
-        ],
-        "send": {
-          "text": "/settings"
-        }
+        ]
       }
     ]
   }

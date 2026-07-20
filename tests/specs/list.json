@@ -1,19 +1,17 @@
 [
   {
-    "name": "/list",
+    "name": "/list rejects non-admin users",
     "steps": [
       {
+        "send": { "text": "/list" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Displays a list of recent feedback entries"
+              "text": "This command is for admins only."
             }
           }
-        ],
-        "send": {
-          "text": "/list"
-        }
+        ]
       }
     ]
   }
