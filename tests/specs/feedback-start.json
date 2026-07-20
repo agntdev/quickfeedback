@@ -1,19 +1,55 @@
 [
   {
-    "name": "Send feedback",
+    "name": "Send feedback initiates the submission flow",
     "steps": [
       {
+        "send": { "callback": "feedback:start" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Initiates the feedback submission flow"
+              "text": "What feedback would you like to share? Send a message (up to 300 characters)."
             }
           }
-        ],
-        "send": {
-          "callback": "feedback:start"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Full feedback submission flow with anonymity choice",
+    "steps": [
+      {
+        "send": { "callback": "feedback:start" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "What feedback would you like to share? Send a message (up to 300 characters)."
+            }
+          }
+        ]
+      },
+      {
+        "send": { "text": "Great bot, love it!" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Would you like to submit this feedback anonymously?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "feedback:anon:yes" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Thanks for your feedback! (submitted anonymously) It has been recorded."
+            }
+          }
+        ]
       }
     ]
   }
